@@ -48,7 +48,7 @@
             100% { opacity: 1; transform: scale(1.2);}
         }
 
-        /* CARTA PRINCIPAL */
+        /* CARTA PRINCIPAL CON GALAXIA Y MENSAJE ORIGINAL */
         .carta-galaxia {
             position: fixed;
             top: 0;
@@ -62,151 +62,331 @@
             justify-content: center;
             z-index: 200;
             transition: opacity 1.2s ease, visibility 1.2s ease;
+            opacity: 1;
+            visibility: visible;
         }
 
         .sobre-magico {
             background: linear-gradient(135deg, #1e1a2f, #0b0820);
             border-radius: 48px;
             width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
+            max-width: 600px;
+            max-height: 85vh;
             overflow-y: auto;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(255, 80, 120, 0.25);
+            padding: 2rem 1.8rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(255, 80, 120, 0.25), 0 0 0 6px rgba(255, 180, 40, 0.1);
             text-align: center;
             border: 1px solid rgba(255, 100, 130, 0.5);
             animation: flotarSuave 3s infinite ease-in-out;
             position: relative;
+            scrollbar-width: thin;
         }
+
+        .sobre-magico::-webkit-scrollbar { width: 5px; }
+        .sobre-magico::-webkit-scrollbar-track { background: #2a1e3a; border-radius: 10px; }
+        .sobre-magico::-webkit-scrollbar-thumb { background: #ff6b8b; border-radius: 10px; }
 
         .galaxia-flotante {
             position: relative;
-            width: 160px;
-            height: 160px;
+            width: 200px;
+            height: 200px;
             margin: 0 auto 20px auto;
             background: radial-gradient(ellipse at 30% 40%, #ffb347, #ff3e6c, #7a2be0);
             border-radius: 50%;
-            box-shadow: 0 0 45px rgba(255, 80, 120, 0.7);
+            box-shadow: 0 0 45px rgba(255, 80, 120, 0.7), inset 0 0 35px rgba(255,255,200,0.5);
             animation: girarGalaxia 16s infinite linear;
+            overflow: hidden;
+        }
+
+        .galaxia-flotante::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-radial-gradient(circle at 20% 35%, rgba(255,255,200,0.5) 1px, transparent 3px, rgba(255,200,100,0.3) 8px);
+            border-radius: 50%;
+            mix-blend-mode: overlay;
+        }
+
+        .galaxia-flotante::after {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255, 240, 150, 0.3) 5%, transparent 70%);
+            border-radius: 50%;
+            animation: brilloPulsante 3s infinite alternate;
         }
 
         .estrella-orbit {
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: #fff9c4;
             border-radius: 50%;
+            box-shadow: 0 0 12px gold;
             top: 50%;
             left: 50%;
         }
-        
-        /* Órbitas simplificadas para evitar saltos */
-        .estrella-orbit:nth-child(1) { animation: orbita1 8s infinite linear; }
-        .estrella-orbit:nth-child(2) { animation: orbita2 12s infinite reverse linear; }
-        .estrella-orbit:nth-child(3) { animation: orbita3 5s infinite linear; }
+        .estrella-orbit:nth-child(1) { width: 5px; height: 5px; animation: orbita1 8s infinite linear; background: #ffe0b5; }
+        .estrella-orbit:nth-child(2) { width: 10px; height: 10px; animation: orbita2 12s infinite reverse linear; background: #fff; }
+        .estrella-orbit:nth-child(3) { width: 6px; height: 6px; animation: orbita3 5s infinite linear; background: #ffd966; }
+        .estrella-orbit:nth-child(4) { width: 12px; height: 12px; animation: orbita4 18s infinite linear; background: #ffb347;  }
 
-        @keyframes orbita1 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(60px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(60px); } }
-        @keyframes orbita2 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(75px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(75px); } }
-        @keyframes orbita3 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(45px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(45px); } }
+        @keyframes orbita1 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(70px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(70px) rotate(-360deg); } }
+        @keyframes orbita2 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(85px) rotate(-360deg); } }
+        @keyframes orbita3 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(55px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(55px) rotate(-360deg); } }
+        @keyframes orbita4 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(95px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(95px) rotate(-360deg); } }
 
         @keyframes girarGalaxia { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes flotarSuave { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        @keyframes brilloPulsante { 0% { opacity: 0.5; transform: scale(1);} 100% { opacity: 1; transform: scale(1.1);} }
+        @keyframes flotarSuave { 0% { transform: translateY(0px) scale(0.98);} 50% { transform: translateY(-8px) scale(1);} 100% { transform: translateY(0px) scale(0.98); } }
 
-        .carta-titulo { font-size: 1.5rem; background: linear-gradient(135deg, #ffb347, #ff6b8b); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: bold; margin-bottom: 12px; }
-        .mensaje-cosmico { background: rgba(0, 0, 0, 0.4); border-radius: 20px; padding: 1rem; margin: 15px 0; border-left: 3px solid #ff6b8b; text-align: left; }
-        .mensaje-cosmico p { color: #ffefdf; font-size: 0.95rem; line-height: 1.5; margin-bottom: 10px; }
-        .highlight-cosmo { color: #ff8787; font-weight: bold; }
-        .firma-cosmo { font-style: italic; text-align: right; color: #ffbc7a; font-size: 0.9rem; margin-top: 10px; }
+        .carta-titulo { font-size: 1.9rem; background: linear-gradient(135deg, #ffb347, #ff6b8b); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: bold; letter-spacing: 2px; margin-bottom: 12px; }
+        .mensaje-cosmico { background: rgba(0, 0, 0, 0.55); border-radius: 28px; padding: 1.3rem; margin: 20px 0 15px; border-left: 3px solid #ff6b8b; text-align: left; backdrop-filter: blur(4px); }
+        .mensaje-cosmico p { color: #ffefdf; font-size: 1rem; line-height: 1.55; margin-bottom: 12px; }
+        .highlight-cosmo { color: #ff8787; font-weight: bold; text-shadow: 0 0 2px #ff3e3e; }
+        .firma-cosmo { margin-top: 12px; font-style: italic; text-align: right; color: #ffbc7a; font-size: 1rem; border-top: 1px dashed #ff6b8b60; padding-top: 10px; }
 
         .btn-abrir {
             background: linear-gradient(45deg, #ff3e3e, #b81c5c);
             border: none;
-            padding: 12px 25px;
-            font-size: 1.1rem;
+            padding: 12px 32px;
+            font-size: 1.2rem;
             font-weight: bold;
             color: white;
-            border-radius: 50px;
+            border-radius: 60px;
             cursor: pointer;
+            margin-top: 15px;
+            transition: 0.2s;
             box-shadow: 0 0 15px #ff3e6c;
+            font-family: inherit;
         }
+        .btn-abrir:hover { transform: scale(1.02); background: linear-gradient(45deg, #ff5e5e, #d42c6a); box-shadow: 0 0 25px #ff6b8b; }
 
-        /* MODALES */
-        .obsession-flotante, .nombre-estelar {
+        /* MENSAJE FLOTANTE DE OBSESIÓN */
+        .obsession-flotante {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
             background: linear-gradient(145deg, #1a0c1c, #2a1030);
-            border-radius: 30px;
-            padding: 2rem;
-            width: 85%;
-            max-width: 450px;
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            padding: 2rem 2.2rem;
+            max-width: 85%;
+            width: 480px;
             z-index: 1000;
             text-align: center;
             border: 2px solid #ff3e6c;
+            box-shadow: 0 0 70px rgba(255, 30, 80, 0.7), inset 0 0 20px rgba(255,200,100,0.3);
             opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+            pointer-events: none;
+            font-family: 'Segoe UI', 'Georgia', serif;
         }
-        .show { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
-
-        .nombre-grande {
+        .obsession-flotante.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+        .obsession-flotante h3 {
             font-size: 1.8rem;
+            color: #ff6b8b;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px #ff2e5e;
+        }
+        .obsession-flotante p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #ffe8dd;
+            margin: 15px 0;
+        }
+        .obsession-corazon {
+            font-size: 2.5rem;
+            animation: latidoObsesion 0.8s infinite alternate;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn-cerrar-obsession {
+            background: #ff2e5e;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 40px;
+            margin-top: 15px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .btn-cerrar-obsession:hover { background: #ff5e7e; transform: scale(1.02); box-shadow: 0 0 15px #ff3e6c; }
+        @keyframes latidoObsesion {
+            0% { transform: scale(1); text-shadow: 0 0 2px #ff3366; }
+            100% { transform: scale(1.2); text-shadow: 0 0 20px #ff6699; }
+        }
+
+        /* MODAL DEL NOMBRE: ESTEFANIA ALVAREZ con estrellas */
+        .nombre-estelar {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: radial-gradient(ellipse at center, #0f0218, #1f0933);
+            backdrop-filter: blur(25px);
+            border-radius: 70px;
+            padding: 2.5rem 3rem;
+            z-index: 1100;
+            text-align: center;
+            border: 3px solid #ffd966;
+            box-shadow: 0 0 80px #ff3e6c, 0 0 20px gold;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.3, 0.55, 1);
+            pointer-events: none;
+            max-width: 90%;
+            width: 550px;
+        }
+        .nombre-estelar.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+        .nombre-grande {
+            font-size: 3rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #FFD966, #FF6B8B);
+            background: linear-gradient(135deg, #FFD966, #FF6B8B, #FFB347);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 10px rgba(255, 62, 108, 0.5);
+            letter-spacing: 4px;
+            text-shadow: 0 0 15px #ff3e6c;
+            margin: 15px 0;
+            animation: brilloNombre 1.5s infinite alternate;
+        }
+        .estrellas-alrededor {
+            font-size: 2.2rem;
+            letter-spacing: 12px;
+            animation: girarEstrellas 3s infinite linear;
+            display: inline-block;
+        }
+        .btn-continuar {
+            background: linear-gradient(45deg, #ffb347, #ff3e6c);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 20px #ff6b8b;
+        }
+        .btn-continuar:hover { transform: scale(1.03); background: linear-gradient(45deg, #ffc34d, #ff5a7e); }
+        @keyframes brilloNombre {
+            0% { text-shadow: 0 0 5px #ff6b8b; letter-spacing: 4px; }
+            100% { text-shadow: 0 0 30px #ffb347, 0 0 10px #ff3e6c; letter-spacing: 6px; }
+        }
+        @keyframes girarEstrellas {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* CONTENEDOR FINAL */
+        /* CONTENEDOR PRINCIPAL */
         .container {
             text-align: center;
-            padding: 20px;
-            border-radius: 25px;
-            background: rgba(20, 20, 20, 0.9);
-            width: 90%;
-            max-width: 450px;
+            padding: 30px;
+            border-radius: 32px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            max-width: 90%;
+            width: 550px;
+            margin: 20px;
+            position: relative;
             z-index: 10;
             opacity: 0;
-            transition: opacity 1s ease;
-            border-left: 4px solid #ff3e3e;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 0.9s ease;
+            backdrop-filter: blur(3px);
+            border-left: 3px solid #ff3e3e;
         }
-        .container.visible { opacity: 1; }
+        .container.visible { opacity: 1; transform: translateY(0); }
+        h1 { color: #ff3e3e; font-size: 1.8rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; }
+        .footer { margin-top: 30px; font-style: italic; font-size: 1.25rem; color: #ff8a8a; border-top: 1px dashed #ff3e3e40; padding-top: 15px; }
 
-        /* FRASES VOLADORAS */
+        /* Animaciones para frases de amor (arriba hacia abajo) */
+        @keyframes caerFraseArribaAbajo {
+            0% {
+                transform: translateY(-20vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(15deg);
+                opacity: 0;
+            }
+        }
+        @keyframes caerFraseArribaAbajoReverse {
+            0% {
+                transform: translateY(-20vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(-15deg);
+                opacity: 0;
+            }
+        }
         .frase-amor {
             position: fixed;
+            top: -10vh;
+            font-size: 1.2rem;
+            font-weight: bold;
+            white-space: nowrap;
             z-index: 2000;
             pointer-events: none;
-            white-space: nowrap;
-            font-weight: bold;
-            animation: caerFrase 6s linear forwards;
+            text-shadow: 0 0 8px #ff3366, 0 0 3px #220011;
+            font-family: 'Segoe UI', cursive;
+            animation-duration: 6s;
+            animation-fill-mode: forwards;
+            animation-timing-function: linear;
         }
 
-        @keyframes caerFrase {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(110vh) rotate(20deg); opacity: 0; }
-        }
+        @keyframes caidaPolvo { 0% { transform: translateY(-30px) scale(0.6); opacity: 0.8; } 100% { transform: translateY(100vh) scale(1.2); opacity: 0; } }
+        @keyframes latidoSuave { 0% { transform: scale(1); } 50% { transform: scale(1.05); color: #ff4d4d; text-shadow: 0 0 5px #ff3e3e; } 100% { transform: scale(1); } }
 
-        /* AJUSTES CELULAR */
-        @media (max-width: 600px) {
-            .carta-titulo { font-size: 1.2rem; }
-            .mensaje-cosmico p { font-size: 0.85rem; }
-            .nombre-grande { font-size: 1.4rem; }
-            .btn-abrir, .btn-continuar, .btn-cerrar-obsession { width: 100%; padding: 15px; }
+        @media (max-width: 550px) {
+            .sobre-magico { padding: 1.5rem; }
+            .galaxia-flotante { width: 150px; height: 150px; }
+            .obsession-flotante { width: 85%; padding: 1.5rem; }
+            .nombre-estelar { padding: 1.5rem; width: 85%; }
+            .nombre-grande { font-size: 1.8rem; }
+            .frase-amor { font-size: 0.9rem; white-space: nowrap; animation-duration: 5s; }
         }
     </style>
 </head>
 <body>
     <div class="star-field" id="starfield"></div>
 
+    <!-- CARTA CÓSMICA -->
     <div id="cartaGalaxia" class="carta-galaxia">
         <div class="sobre-magico">
             <div class="galaxia-flotante">
+                <div class="estrella-orbit"></div>
                 <div class="estrella-orbit"></div>
                 <div class="estrella-orbit"></div>
                 <div class="estrella-orbit"></div>
@@ -219,84 +399,310 @@
                 <div class="firma-cosmo">✧ Te quiero como loco mi reina. ✧</div>
             </div>
             <button id="abrirCartaBtn" class="btn-abrir">✧ Abrir el corazón ✧</button>
+            <p style="font-size: 0.75rem; margin-top: 12px; opacity: 0.7; color: #d9b48b;">toca el botón para revelar todo</p>
         </div>
     </div>
 
+    <!-- Mensaje flotante de OBSESIÓN -->
     <div id="obsessionMsg" class="obsession-flotante">
-        <h3 style="color: #ff6b8b;">‼️ OBSESIÓN PURA ‼️</h3>
-        <p style="color: #ffe8dd; font-size: 0.9rem; margin: 15px 0;">Eres mi primer pensamiento al despertar y mi única obsesión al cerrar los ojos. <strong>Necesito tu existencia como el universo necesita las estrellas.</strong></p>
-        <button id="cerrarObsessionBtn" class="btn-abrir" style="font-size: 0.9rem;">Aceptar mi obsesión cielo ❤️‍🔥</button>
+        <div class="obsession-corazon">💘💥💘</div>
+        <h3>‼️ OBSESIÓN PURA CIELO ‼️</h3>
+        <p>Eres mi primer pensamiento al despertar y mi única obsesión al cerrar los ojos. <strong>Necesito tu existencia como el universo necesita las estrellas.</strong> Cada célula de mi cuerpo te pertenece, y no concibo un segundo sin que sepas que late por ti. 🔥</p>
+        <p>Eres MÍA. Con locura, con delirio, con una intensidad que quema galaxias. <span style="color:#ff8a8a;">Respiras y yo enloquezco.</span> Sonríes y se detiene el tiempo. Me volvería loco si te faltara algo, porque <strong class="highlight-cosmo">mi alma está esclava de tu amor.</strong></p>
+        <div class="obsession-corazon">💖🔒💖</div>
+        <button id="cerrarObsessionBtn" class="btn-cerrar-obsession">Aceptar mi obsesión cielo❤️‍🔥</button>
     </div>
 
+    <!-- MODAL PARA EL NOMBRE: ESTEFANIA ALVAREZ con estrellas -->
     <div id="nombreEstelarModal" class="nombre-estelar">
-        <div class="nombre-grande">ESTEFANIA ALVAREZ <br> MI REINA HERMOSA</div>
-        <button id="continuarFinalBtn" class="btn-abrir" style="margin-top: 20px;">Continuar →</button>
+        <div class="estrellas-alrededor">⭐✨🌟✨⭐</div>
+        <div class="nombre-grande">ESTEFANIA ALVAREZ MI REINA HERMOSA</div>
+        <div class="estrellas-alrededor">✨💫⭐🌟✨</div>
+        <button id="continuarFinalBtn" class="btn-continuar">Continuar →</button>
     </div>
 
+    <!-- Contenido principal final -->
     <div id="contenidoPrincipal" class="container">
-        <h1 style="color: #ff3e3e; font-size: 1.4rem; margin-bottom: 15px;">💫 BAJO MI CUIDADO 💫</h1>
-        <p style="color: white; font-size: 0.9rem; line-height: 1.6;">Me fijé que te quedaban pocas gotas mi cielo y no voy a permitir que te falte nada. <span style="color: #ff8a8a; font-weight: bold;">Lo que es mío, yo lo cuido.</span></p>
-        <p style="color: white; font-size: 0.9rem; line-height: 1.6; margin-top: 10px;">Anoche no quise ver tus uñas por el celular; quiero que el estreno sea hoy, de cerca.</p>
-        <div style="margin-top: 20px; font-style: italic; color: #ff8a8a; border-top: 1px dashed #555; padding-top: 10px;">🌙 Te quiero como loco, mi Estefania. 🌙</div>
+        <h1>💫 Bajo mi cuidado 💫</h1>
+        <p>Me fijé que te quedaban pocas gotas mi cielo y no voy a permitir que te falte nada. <span class="highlight">Lo que es mío, yo lo cuido.</span></p>
+        <p>Anoche no quise ver tus uñas por el celular; quiero que el estreno sea hoy, de cerca, cuando te tome las manos y sienta que eres solo mía.</p>
+        <p>Mejórate pronto, mi reina. Tu hombre no te quita la mirada de encima.</p>
+        <div class="footer">🌙 Te quiero como loco, mi Estefania. Cada latido me recuerda que eres mi refugio cielo 🌙</div>
     </div>
 
     <script>
-        // Crear estrellas de fondo
+        // Estrellas de fondo
         function crearEstrellas() {
             const starfield = document.getElementById('starfield');
-            for (let i = 0; i < 150; i++) {
+            for (let i = 0; i < 260; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
-                const size = Math.random() * 2 + 1;
+                const size = Math.random() * 3 + 1;
                 star.style.width = size + 'px';
                 star.style.height = size + 'px';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 star.style.animationDuration = (Math.random() * 3 + 1.5) + 's';
+                star.style.animationDelay = (Math.random() * 5) + 's';
+                star.style.opacity = Math.random() * 0.7 + 0.2;
                 starfield.appendChild(star);
             }
         }
         crearEstrellas();
 
-        // Lógica de navegación
-        const btnAbrir = document.getElementById('abrirCartaBtn');
-        const obsessionModal = document.getElementById('obsessionMsg');
-        const btnCerrarObs = document.getElementById('cerrarObsessionBtn');
-        const nombreModal = document.getElementById('nombreEstelarModal');
-        const btnFinal = document.getElementById('continuarFinalBtn');
         const cartaOverlay = document.getElementById('cartaGalaxia');
-        const contenidoPrincipal = document.getElementById('contenidoPrincipal');
-
-        btnAbrir.addEventListener('click', () => obsessionModal.classList.add('show'));
+        const btnAbrir = document.getElementById('abrirCartaBtn');
+        const contenidoMain = document.getElementById('contenidoPrincipal');
+        const obsessionModal = document.getElementById('obsessionMsg');
+        const cerrarObsession = document.getElementById('cerrarObsessionBtn');
+        const nombreModal = document.getElementById('nombreEstelarModal');
+        const continuarFinal = document.getElementById('continuarFinalBtn');
         
-        btnCerrarObs.addEventListener('click', () => {
-            obsessionModal.classList.remove('show');
-            nombreModal.classList.add('show');
-        });
+        let yaAbierto = false;
+        let obsessionAceptada = false;
+        let intervaloFrases = null; // intervalo para lluvia infinita
 
-        btnFinal.addEventListener('click', () => {
-            nombreModal.classList.remove('show');
-            cartaOverlay.style.opacity = '0';
+        // Mostrar mensaje obsesion
+        function mostrarObsesionFlotante() {
+            if (obsessionModal) {
+                obsessionModal.classList.add('show');
+                for(let i=0;i<16;i++) {
+                    const corazoncito = document.createElement('div');
+                    corazoncito.innerHTML = '❤️‍🔥';
+                    corazoncito.style.position = 'fixed';
+                    corazoncito.style.left = Math.random() * 100 + '%';
+                    corazoncito.style.top = Math.random() * 100 + '%';
+                    corazoncito.style.fontSize = (Math.random() * 22 + 10) + 'px';
+                    corazoncito.style.pointerEvents = 'none';
+                    corazoncito.style.zIndex = '999';
+                    corazoncito.style.opacity = '0.8';
+                    corazoncito.style.animation = `flotarChispa ${Math.random() * 1.5 + 0.8}s ease-out forwards`;
+                    document.body.appendChild(corazoncito);
+                    setTimeout(() => corazoncito.remove(), 1300);
+                }
+            }
+        }
+
+        // Mostrar el nombre Estefania Alvarez con estrellas
+        function mostrarNombreEstelar() {
+            if (nombreModal) {
+                nombreModal.classList.add('show');
+                for (let i = 0; i < 40; i++) {
+                    const estrellaVoladora = document.createElement('div');
+                    estrellaVoladora.innerHTML = Math.random() > 0.5 ? '⭐' : '✨';
+                    estrellaVoladora.style.position = 'fixed';
+                    estrellaVoladora.style.left = Math.random() * 100 + '%';
+                    estrellaVoladora.style.top = Math.random() * 100 + '%';
+                    estrellaVoladora.style.fontSize = (Math.random() * 24 + 12) + 'px';
+                    estrellaVoladora.style.pointerEvents = 'none';
+                    estrellaVoladora.style.zIndex = '1101';
+                    estrellaVoladora.style.opacity = '0.9';
+                    estrellaVoladora.style.animation = `flotarChispa ${Math.random() * 2 + 0.8}s ease-out forwards`;
+                    document.body.appendChild(estrellaVoladora);
+                    setTimeout(() => estrellaVoladora.remove(), 1400);
+                }
+                nombreModal.style.animation = 'flotarSuave 0.5s ease';
+                setTimeout(() => { if(nombreModal) nombreModal.style.animation = ''; }, 500);
+            }
+        }
+
+        // ========== LLUVIA INFINITA DE FRASES (ARRIBA HACIA ABAJO) ==========
+        function crearFraseAmor() {
+            const frases = [
+                "❤️ Te quiero mucho ❤️", "🌹 Te quiero mucho 🌹", "💖 Te quiero mucho 💖",
+                "✨ mi cielo ✨", "🌟 mi cielo 🌟", "💫 mi cielo 💫",
+                "👑 mi reina 👑", "💎 mi reina 💎", "🌺 mi reina 🌺",
+                "💘 Te quiero mucho 💘", "⭐ mi cielo ⭐", "💕 mi reina 💕",
+                "🥰 Te quiero mucho 🥰", "🌙 mi cielo 🌙", "🔥 mi reina 🔥"
+            ];
+            const fraseDiv = document.createElement('div');
+            fraseDiv.classList.add('frase-amor');
+            const textoAleatorio = frases[Math.floor(Math.random() * frases.length)];
+            fraseDiv.innerText = textoAleatorio;
+            const colores = ['#ffb347', '#ff6b8b', '#ffd966', '#ff8c8c', '#ffbc7a', '#ffa07a', '#ff85a1'];
+            fraseDiv.style.color = colores[Math.floor(Math.random() * colores.length)];
+            fraseDiv.style.left = Math.random() * 100 + '%';
+            fraseDiv.style.fontSize = (Math.random() * 20 + 14) + 'px';
+            const duracion = Math.random() * 4 + 5; // entre 5 y 9 segundos
+            fraseDiv.style.animationDuration = duracion + 's';
+            // Elegir animación de caída (de arriba a abajo)
+            const animType = Math.random() > 0.5 ? 'caerFraseArribaAbajo' : 'caerFraseArribaAbajoReverse';
+            fraseDiv.style.animationName = animType;
+            fraseDiv.style.animationTimingFunction = 'linear';
+            fraseDiv.style.opacity = '0.9';
+            document.body.appendChild(fraseDiv);
+            // Eliminar después de la animación
             setTimeout(() => {
-                cartaOverlay.style.display = 'none';
-                contenidoPrincipal.classList.add('visible');
-                iniciarLluvia();
-            }, 800);
-        });
+                if (fraseDiv && fraseDiv.remove) fraseDiv.remove();
+            }, duracion * 1000);
+        }
 
-        function iniciarLluvia() {
-            const frases = ["❤️ Te quiero mucho", "✨ Mi cielo", "👑 Mi reina", "💖 Eres mía"];
-            setInterval(() => {
-                const frase = document.createElement('div');
-                frase.classList.add('frase-amor');
-                frase.innerText = frases[Math.floor(Math.random() * frases.length)];
-                frase.style.left = Math.random() * 80 + '%';
-                frase.style.color = ['#ff6b8b', '#ffb347', '#ffd966'][Math.floor(Math.random() * 3)];
-                frase.style.fontSize = (Math.random() * 15 + 15) + 'px';
-                document.body.appendChild(frase);
-                setTimeout(() => frase.remove(), 6000);
+        function iniciarLluviaInfinita() {
+            if (intervaloFrases) clearInterval(intervaloFrases);
+            // Lanzar 20 frases inmediatamente para que se vea abundante
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => crearFraseAmor(), i * 120);
+            }
+            // Intervalo para seguir creando frases cada 0.6 segundos (flujo continuo)
+            intervaloFrases = setInterval(() => {
+                crearFraseAmor();
+                // a veces dos a la vez para más intensidad
+                if (Math.random() > 0.6) {
+                    setTimeout(() => crearFraseAmor(), 150);
+                }
             }, 600);
         }
+
+        function detenerLluviaInfinita() {
+            if (intervaloFrases) {
+                clearInterval(intervaloFrases);
+                intervaloFrases = null;
+            }
+            // Opcional: eliminar todas las frases existentes (para no saturar al final)
+            const todasFrases = document.querySelectorAll('.frase-amor');
+            todasFrases.forEach(f => f.remove());
+        }
+
+        // Función para cerrar el modal del nombre y mostrar la lluvia de frases + final
+        function cerrarNombreYFinalizar() {
+            if (nombreModal) {
+                nombreModal.classList.remove('show');
+            }
+            // INICIAR LLUVIA INFINITA DE "TE QUIERO MUCHO", "MI CIELO", "MI REINA"
+            iniciarLluviaInfinita();
+            
+            // Pequeño delay antes de revelar el contenido principal (para que disfrute la lluvia)
+            setTimeout(() => {
+                if (!yaAbierto) {
+                    yaAbierto = true;
+                    if (cartaOverlay) {
+                        cartaOverlay.style.opacity = '0';
+                        cartaOverlay.style.transition = 'opacity 0.8s ease, visibility 0.8s ease';
+                        setTimeout(() => {
+                            cartaOverlay.style.visibility = 'hidden';
+                            cartaOverlay.style.display = 'none';
+                            contenidoMain.classList.add('visible');
+                            crearChispasEstelares();
+                            const footerEl = document.querySelector('.footer');
+                            if(footerEl) {
+                                footerEl.style.animation = 'latidoSuave 0.6s ease 2';
+                                setTimeout(() => { if(footerEl) footerEl.style.animation = ''; }, 1200);
+                            }
+                        }, 700);
+                    } else {
+                        contenidoMain.classList.add('visible');
+                    }
+                }
+            }, 500);
+        }
+
+        function aceptarObsesionYMostrarNombre() {
+            if (obsessionAceptada) return;
+            obsessionAceptada = true;
+            if (obsessionModal) {
+                obsessionModal.classList.remove('show');
+            }
+            mostrarNombreEstelar();
+        }
+
+        // Eventos
+        if (btnAbrir) {
+            btnAbrir.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (yaAbierto) return;
+                mostrarObsesionFlotante();
+            });
+        }
+
+        if (cerrarObsession) {
+            cerrarObsession.addEventListener('click', () => {
+                aceptarObsesionYMostrarNombre();
+            });
+        }
+
+        if (continuarFinal) {
+            continuarFinal.addEventListener('click', () => {
+                cerrarNombreYFinalizar();
+            });
+        }
+
+        function crearChispasEstelares() {
+            for(let i=0; i<60; i++) {
+                const spark = document.createElement('div');
+                spark.style.position = 'fixed';
+                spark.style.width = Math.random() * 6 + 2 + 'px';
+                spark.style.height = spark.style.width;
+                spark.style.background = `radial-gradient(circle, #ffd966, #ff8c8c, #ffb347)`;
+                spark.style.borderRadius = '50%';
+                spark.style.pointerEvents = 'none';
+                spark.style.zIndex = '999';
+                spark.style.left = Math.random() * 100 + '%';
+                spark.style.top = Math.random() * 100 + '%';
+                spark.style.opacity = '0.9';
+                spark.style.boxShadow = '0 0 14px gold';
+                spark.style.animation = `flotarChispa ${Math.random() * 2 + 1.2}s ease-out forwards`;
+                document.body.appendChild(spark);
+                setTimeout(() => spark.remove(), 1300);
+            }
+        }
+
+        function polvoFino() {
+            for (let i=0; i<3; i++) {
+                let particula = document.createElement('div');
+                particula.style.position = 'fixed';
+                particula.style.bottom = '0px';
+                particula.style.left = Math.random() * 100 + '%';
+                particula.style.width = '2px';
+                particula.style.height = '2px';
+                particula.style.background = '#ffbe76';
+                particula.style.borderRadius = '50%';
+                particula.style.opacity = Math.random() * 0.6;
+                particula.style.animation = 'caidaPolvo 9s linear forwards';
+                particula.style.pointerEvents = 'none';
+                document.body.appendChild(particula);
+                setTimeout(() => particula.remove(), 9000);
+            }
+        }
+        setInterval(polvoFino, 850);
+
+        function ajustarOrbitasResponsive() {
+            const galaxia = document.querySelector('.galaxia-flotante');
+            if (!galaxia) return;
+            const ancho = galaxia.offsetWidth;
+            const radioBase = ancho * 0.42;
+            const radios = [radioBase * 0.85, radioBase * 1.05, radioBase * 0.7, radioBase * 1.15];
+            const keyframes = [
+                `@keyframes orbita1 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(${radios[0]}px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(${radios[0]}px) rotate(-360deg); } }`,
+                `@keyframes orbita2 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(${radios[1]}px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(${radios[1]}px) rotate(-360deg); } }`,
+                `@keyframes orbita3 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(${radios[2]}px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(${radios[2]}px) rotate(-360deg); } }`,
+                `@keyframes orbita4 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(${radios[3]}px) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(${radios[3]}px) rotate(-360deg); } }`
+            ];
+            const orbitas = document.querySelectorAll('.estrella-orbit');
+            for (let i = 0; i < orbitas.length && i < keyframes.length; i++) {
+                let styleId = `dynamicOrbit${i}`;
+                let existStyle = document.getElementById(styleId);
+                if (existStyle) existStyle.remove();
+                let newStyle = document.createElement('style');
+                newStyle.id = styleId;
+                newStyle.textContent = keyframes[i];
+                document.head.appendChild(newStyle);
+                orbitas[i].style.animation = `orbita${i+1} ${ orbitas[i].style.animationDuration || (i===2 ? '5s' : i===1 ? '12s' : i===3 ? '18s' : '8s')} infinite linear`;
+            }
+        }
+        window.addEventListener('load', () => setTimeout(ajustarOrbitasResponsive, 100));
+        window.addEventListener('resize', ajustarOrbitasResponsive);
+        
+        contenidoMain.classList.remove('visible');
+        contenidoMain.style.opacity = '0';
+        
+        let latidoBtn = setInterval(() => {
+            if(btnAbrir && cartaOverlay && cartaOverlay.style.display !== 'none') {
+                btnAbrir.style.transform = 'scale(1.01)';
+                setTimeout(() => { if(btnAbrir) btnAbrir.style.transform = ''; }, 400);
+            } else if(btnAbrir && cartaOverlay && cartaOverlay.style.display === 'none') {
+                clearInterval(latidoBtn);
+            }
+        }, 2300);
     </script>
 </body>
 </html>
