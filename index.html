@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- VIEWPORT OPTIMIZADO PARA MÓVIL: escala fija, sin zoom excesivo, pero permitiendo interacción -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Solo Para Ti · Estefania Alvarez ✨ Te quiero mucho</title>
     <style>
@@ -10,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* evita selección no deseada pero sin afectar tap */
+            user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -18,12 +17,12 @@
             background: radial-gradient(circle at center, #03050b 0%, #000000 100%);
             font-family: 'Segoe UI', 'Poppins', 'Georgia', serif;
             min-height: 100vh;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow-x: hidden;
             position: relative;
-            padding: 16px; /* Solo para evitar que el contenido toque los bordes en móvil */
         }
 
         /* Fondo estelar dinámico */
@@ -67,13 +66,12 @@
             transition: opacity 1.2s ease, visibility 1.2s ease;
             opacity: 1;
             visibility: visible;
-            padding: 16px;
         }
 
         .sobre-magico {
             background: linear-gradient(135deg, #1e1a2f, #0b0820);
             border-radius: 48px;
-            width: 100%;
+            width: 90%;
             max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
@@ -101,7 +99,6 @@
             box-shadow: 0 0 45px rgba(255, 80, 120, 0.7), inset 0 0 35px rgba(255,255,200,0.5);
             animation: girarGalaxia 16s infinite linear;
             overflow: hidden;
-            max-width: 100%;
         }
 
         .galaxia-flotante::before {
@@ -169,8 +166,6 @@
             transition: 0.2s;
             box-shadow: 0 0 15px #ff3e6c;
             font-family: inherit;
-            width: auto;
-            min-width: 200px;
         }
         .btn-abrir:hover { transform: scale(1.02); background: linear-gradient(45deg, #ff5e5e, #d42c6a); box-shadow: 0 0 25px #ff6b8b; }
 
@@ -313,7 +308,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             max-width: 90%;
             width: 550px;
-            margin: 20px;
+            margin: 20px auto;
             position: relative;
             z-index: 10;
             opacity: 0;
@@ -379,15 +374,15 @@
         @keyframes flotarChispa { 0% { transform: scale(0.2) translateY(0px); opacity: 0.8;} 100% { transform: scale(1.2) translateY(-50px) translateX(20px); opacity: 0;} }
 
         @media (max-width: 550px) {
-            body { padding: 8px; }
-            .sobre-magico { padding: 1.5rem; }
+            .sobre-magico { padding: 1.5rem; width: 92%; }
             .galaxia-flotante { width: 150px; height: 150px; }
-            .obsession-flotante { width: 85%; padding: 1.5rem; }
-            .nombre-estelar { padding: 1.5rem; width: 85%; }
+            .obsession-flotante { width: 90%; padding: 1.5rem; }
+            .nombre-estelar { padding: 1.5rem; width: 90%; }
             .nombre-grande { font-size: 1.8rem; }
             .frase-amor { font-size: 0.9rem; white-space: nowrap; animation-duration: 5s; }
             .carta-titulo { font-size: 1.5rem; }
-            .btn-abrir { padding: 10px 24px; font-size: 1rem; min-width: 170px; }
+            .btn-abrir { padding: 10px 24px; font-size: 1rem; }
+            .container { width: 92%; margin: 16px auto; }
         }
     </style>
 </head>
@@ -474,7 +469,6 @@
         let obsessionAceptada = false;
         let intervaloFrases = null;
 
-        // Mostrar mensaje obsesion
         function mostrarObsesionFlotante() {
             if (obsessionModal) {
                 obsessionModal.classList.add('show');
