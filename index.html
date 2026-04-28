@@ -75,7 +75,7 @@
             max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
-            padding: 2rem 1.8rem;
+            padding: 2rem 1.5rem;
             box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(255, 80, 120, 0.25), 0 0 0 6px rgba(255, 180, 40, 0.1);
             text-align: center;
             border: 1px solid rgba(255, 100, 130, 0.5);
@@ -178,9 +178,9 @@
             background: linear-gradient(145deg, #1a0c1c, #2a1030);
             backdrop-filter: blur(20px);
             border-radius: 60px;
-            padding: 2rem 2.2rem;
-            max-width: 85%;
-            width: 480px;
+            padding: 2rem 2rem;
+            width: 85%;
+            max-width: 480px;
             z-index: 1000;
             text-align: center;
             border: 2px solid #ff3e6c;
@@ -196,7 +196,7 @@
             pointer-events: auto;
         }
         .obsession-flotante h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #ff6b8b;
             margin-bottom: 15px;
             letter-spacing: 2px;
@@ -204,13 +204,13 @@
             text-shadow: 0 0 5px #ff2e5e;
         }
         .obsession-flotante p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
             color: #ffe8dd;
-            margin: 15px 0;
+            margin: 12px 0;
         }
         .obsession-corazon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             animation: latidoObsesion 0.8s infinite alternate;
             display: inline-block;
             margin: 10px 0;
@@ -241,8 +241,8 @@
             transform: translate(-50%, -50%) scale(0.7);
             background: radial-gradient(ellipse at center, #0f0218, #1f0933);
             backdrop-filter: blur(25px);
-            border-radius: 70px;
-            padding: 2.5rem 3rem;
+            border-radius: 60px;
+            padding: 2rem 1.5rem;
             z-index: 1100;
             text-align: center;
             border: 3px solid #ffd966;
@@ -250,8 +250,8 @@
             opacity: 0;
             transition: all 0.5s cubic-bezier(0.34, 1.3, 0.55, 1);
             pointer-events: none;
-            max-width: 90%;
-            width: 550px;
+            width: 85%;
+            max-width: 550px;
         }
         .nombre-estelar.show {
             opacity: 1;
@@ -259,40 +259,40 @@
             pointer-events: auto;
         }
         .nombre-grande {
-            font-size: 3rem;
+            font-size: 2.2rem;
             font-weight: 900;
             background: linear-gradient(135deg, #FFD966, #FF6B8B, #FFB347);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-shadow: 0 0 15px #ff3e6c;
             margin: 15px 0;
             animation: brilloNombre 1.5s infinite alternate;
         }
         .estrellas-alrededor {
-            font-size: 2.2rem;
-            letter-spacing: 12px;
+            font-size: 1.8rem;
+            letter-spacing: 8px;
             animation: girarEstrellas 3s infinite linear;
             display: inline-block;
         }
         .btn-continuar {
             background: linear-gradient(45deg, #ffb347, #ff3e6c);
             border: none;
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 50px;
             color: white;
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 25px;
+            font-size: 1rem;
+            margin-top: 20px;
             cursor: pointer;
             transition: 0.2s;
             box-shadow: 0 0 20px #ff6b8b;
         }
         .btn-continuar:hover { transform: scale(1.03); background: linear-gradient(45deg, #ffc34d, #ff5a7e); }
         @keyframes brilloNombre {
-            0% { text-shadow: 0 0 5px #ff6b8b; letter-spacing: 4px; }
-            100% { text-shadow: 0 0 30px #ffb347, 0 0 10px #ff3e6c; letter-spacing: 6px; }
+            0% { text-shadow: 0 0 5px #ff6b8b; letter-spacing: 3px; }
+            100% { text-shadow: 0 0 30px #ffb347, 0 0 10px #ff3e6c; letter-spacing: 4px; }
         }
         @keyframes girarEstrellas {
             0% { transform: rotate(0deg); }
@@ -302,12 +302,12 @@
         /* CONTENEDOR PRINCIPAL */
         .container {
             text-align: center;
-            padding: 30px;
+            padding: 25px 20px;
             border-radius: 32px;
             background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-            max-width: 90%;
-            width: 550px;
+            width: 90%;
+            max-width: 550px;
             margin: 20px auto;
             position: relative;
             z-index: 10;
@@ -318,53 +318,34 @@
             border-left: 3px solid #ff3e3e;
         }
         .container.visible { opacity: 1; transform: translateY(0); }
-        h1 { color: #ff3e3e; font-size: 1.8rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; }
-        .footer { margin-top: 30px; font-style: italic; font-size: 1.25rem; color: #ff8a8a; border-top: 1px dashed #ff3e3e40; padding-top: 15px; }
+        h1 { color: #ff3e3e; font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .container p { font-size: 0.95rem; line-height: 1.5; margin-bottom: 12px; color: #ececec; }
+        .footer { margin-top: 20px; font-style: italic; font-size: 1rem; color: #ff8a8a; border-top: 1px dashed #ff3e3e40; padding-top: 12px; }
 
-        /* Animaciones para frases de amor (arriba hacia abajo) */
+        /* Animaciones para frases de amor */
         @keyframes caerFraseArribaAbajo {
-            0% {
-                transform: translateY(-20vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(15deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-20vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(15deg); opacity: 0; }
         }
         @keyframes caerFraseArribaAbajoReverse {
-            0% {
-                transform: translateY(-20vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(-15deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-20vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(-15deg); opacity: 0; }
         }
         .frase-amor {
             position: fixed;
             top: -10vh;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
             white-space: nowrap;
             z-index: 2000;
             pointer-events: none;
             text-shadow: 0 0 8px #ff3366, 0 0 3px #220011;
             font-family: 'Segoe UI', cursive;
-            animation-duration: 6s;
+            animation-duration: 5s;
             animation-fill-mode: forwards;
             animation-timing-function: linear;
         }
@@ -374,15 +355,16 @@
         @keyframes flotarChispa { 0% { transform: scale(0.2) translateY(0px); opacity: 0.8;} 100% { transform: scale(1.2) translateY(-50px) translateX(20px); opacity: 0;} }
 
         @media (max-width: 550px) {
-            .sobre-magico { padding: 1.5rem; width: 92%; }
-            .galaxia-flotante { width: 150px; height: 150px; }
-            .obsession-flotante { width: 90%; padding: 1.5rem; }
-            .nombre-estelar { padding: 1.5rem; width: 90%; }
-            .nombre-grande { font-size: 1.8rem; }
-            .frase-amor { font-size: 0.9rem; white-space: nowrap; animation-duration: 5s; }
-            .carta-titulo { font-size: 1.5rem; }
-            .btn-abrir { padding: 10px 24px; font-size: 1rem; }
-            .container { width: 92%; margin: 16px auto; }
+            .sobre-magico { padding: 1.2rem; width: 92%; }
+            .galaxia-flotante { width: 130px; height: 130px; }
+            .carta-titulo { font-size: 1.3rem; }
+            .btn-abrir { padding: 10px 20px; font-size: 1rem; }
+            .obsession-flotante { padding: 1.2rem; width: 92%; }
+            .obsession-flotante h3 { font-size: 1.2rem; }
+            .obsession-flotante p { font-size: 0.85rem; }
+            .nombre-estelar { padding: 1.2rem; width: 92%; }
+            .nombre-grande { font-size: 1.6rem; }
+            .frase-amor { font-size: 0.8rem; white-space: nowrap; animation-duration: 4.5s; }
         }
     </style>
 </head>
@@ -406,7 +388,7 @@
                 <div class="firma-cosmo">✧ Te amo como loco. ✧</div>
             </div>
             <button id="abrirCartaBtn" class="btn-abrir">✧ Abrir el corazón ✧</button>
-            <p style="font-size: 0.75rem; margin-top: 12px; opacity: 0.7; color: #d9b48b;">toca el botón para revelar todo</p>
+            <p style="font-size: 0.7rem; margin-top: 12px; opacity: 0.7; color: #d9b48b;">toca el botón para revelar todo</p>
         </div>
     </div>
 
@@ -420,7 +402,7 @@
         <button id="cerrarObsessionBtn" class="btn-cerrar-obsession">Aceptar mi obsesión ❤️‍🔥</button>
     </div>
 
-    <!-- MODAL PARA EL NOMBRE: ESTEFANIA ALVAREZ con estrellas -->
+    <!-- MODAL PARA EL NOMBRE: ESTEFANIA ALVAREZ -->
     <div id="nombreEstelarModal" class="nombre-estelar">
         <div class="estrellas-alrededor">⭐✨🌟✨⭐</div>
         <div class="nombre-grande">ESTEFANIA ALVAREZ</div>
@@ -438,10 +420,9 @@
     </div>
 
     <script>
-        // Estrellas de fondo
         function crearEstrellas() {
             const starfield = document.getElementById('starfield');
-            for (let i = 0; i < 260; i++) {
+            for (let i = 0; i < 200; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 const size = Math.random() * 3 + 1;
@@ -472,13 +453,13 @@
         function mostrarObsesionFlotante() {
             if (obsessionModal) {
                 obsessionModal.classList.add('show');
-                for(let i=0;i<16;i++) {
+                for(let i=0;i<12;i++) {
                     const corazoncito = document.createElement('div');
                     corazoncito.innerHTML = '❤️‍🔥';
                     corazoncito.style.position = 'fixed';
                     corazoncito.style.left = Math.random() * 100 + '%';
                     corazoncito.style.top = Math.random() * 100 + '%';
-                    corazoncito.style.fontSize = (Math.random() * 22 + 10) + 'px';
+                    corazoncito.style.fontSize = (Math.random() * 20 + 10) + 'px';
                     corazoncito.style.pointerEvents = 'none';
                     corazoncito.style.zIndex = '999';
                     corazoncito.style.opacity = '0.8';
@@ -492,13 +473,13 @@
         function mostrarNombreEstelar() {
             if (nombreModal) {
                 nombreModal.classList.add('show');
-                for (let i = 0; i < 40; i++) {
+                for (let i = 0; i < 30; i++) {
                     const estrellaVoladora = document.createElement('div');
                     estrellaVoladora.innerHTML = Math.random() > 0.5 ? '⭐' : '✨';
                     estrellaVoladora.style.position = 'fixed';
                     estrellaVoladora.style.left = Math.random() * 100 + '%';
                     estrellaVoladora.style.top = Math.random() * 100 + '%';
-                    estrellaVoladora.style.fontSize = (Math.random() * 24 + 12) + 'px';
+                    estrellaVoladora.style.fontSize = (Math.random() * 20 + 10) + 'px';
                     estrellaVoladora.style.pointerEvents = 'none';
                     estrellaVoladora.style.zIndex = '1101';
                     estrellaVoladora.style.opacity = '0.9';
@@ -506,8 +487,6 @@
                     document.body.appendChild(estrellaVoladora);
                     setTimeout(() => estrellaVoladora.remove(), 1400);
                 }
-                nombreModal.style.animation = 'flotarSuave 0.5s ease';
-                setTimeout(() => { if(nombreModal) nombreModal.style.animation = ''; }, 500);
             }
         }
 
@@ -526,12 +505,11 @@
             const colores = ['#ffb347', '#ff6b8b', '#ffd966', '#ff8c8c', '#ffbc7a', '#ffa07a', '#ff85a1'];
             fraseDiv.style.color = colores[Math.floor(Math.random() * colores.length)];
             fraseDiv.style.left = Math.random() * 100 + '%';
-            fraseDiv.style.fontSize = (Math.random() * 20 + 14) + 'px';
-            const duracion = Math.random() * 4 + 5;
+            fraseDiv.style.fontSize = (Math.random() * 14 + 12) + 'px';
+            const duracion = Math.random() * 3 + 4;
             fraseDiv.style.animationDuration = duracion + 's';
             const animType = Math.random() > 0.5 ? 'caerFraseArribaAbajo' : 'caerFraseArribaAbajoReverse';
             fraseDiv.style.animationName = animType;
-            fraseDiv.style.animationTimingFunction = 'linear';
             fraseDiv.style.opacity = '0.9';
             document.body.appendChild(fraseDiv);
             setTimeout(() => {
@@ -541,15 +519,15 @@
 
         function iniciarLluviaInfinita() {
             if (intervaloFrases) clearInterval(intervaloFrases);
-            for (let i = 0; i < 25; i++) {
-                setTimeout(() => crearFraseAmor(), i * 120);
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => crearFraseAmor(), i * 100);
             }
             intervaloFrases = setInterval(() => {
                 crearFraseAmor();
-                if (Math.random() > 0.6) {
-                    setTimeout(() => crearFraseAmor(), 150);
+                if (Math.random() > 0.7) {
+                    setTimeout(() => crearFraseAmor(), 100);
                 }
-            }, 600);
+            }, 500);
         }
 
         function cerrarNombreYFinalizar() {
@@ -567,10 +545,10 @@
                             cartaOverlay.style.visibility = 'hidden';
                             cartaOverlay.style.display = 'none';
                             contenidoMain.classList.add('visible');
-                            for(let i=0;i<60;i++) {
+                            for(let i=0;i<40;i++) {
                                 const spark = document.createElement('div');
                                 spark.style.position = 'fixed';
-                                spark.style.width = Math.random() * 6 + 2 + 'px';
+                                spark.style.width = Math.random() * 5 + 2 + 'px';
                                 spark.style.height = spark.style.width;
                                 spark.style.background = `radial-gradient(circle, #ffd966, #ff8c8c, #ffb347)`;
                                 spark.style.borderRadius = '50%';
@@ -579,22 +557,22 @@
                                 spark.style.left = Math.random() * 100 + '%';
                                 spark.style.top = Math.random() * 100 + '%';
                                 spark.style.opacity = '0.9';
-                                spark.style.boxShadow = '0 0 14px gold';
-                                spark.style.animation = `flotarChispa ${Math.random() * 2 + 1.2}s ease-out forwards`;
+                                spark.style.boxShadow = '0 0 10px gold';
+                                spark.style.animation = `flotarChispa ${Math.random() * 2 + 1}s ease-out forwards`;
                                 document.body.appendChild(spark);
-                                setTimeout(() => spark.remove(), 1300);
+                                setTimeout(() => spark.remove(), 1200);
                             }
                             const footerEl = document.querySelector('.footer');
                             if(footerEl) {
                                 footerEl.style.animation = 'latidoSuave 0.6s ease 2';
                                 setTimeout(() => { if(footerEl) footerEl.style.animation = ''; }, 1200);
                             }
-                        }, 700);
+                        }, 600);
                     } else {
                         contenidoMain.classList.add('visible');
                     }
                 }
-            }, 500);
+            }, 400);
         }
 
         function aceptarObsesionYMostrarNombre() {
@@ -627,7 +605,7 @@
         }
 
         function polvoFino() {
-            for (let i=0; i<3; i++) {
+            for (let i=0; i<2; i++) {
                 let particula = document.createElement('div');
                 particula.style.position = 'fixed';
                 particula.style.bottom = '0px';
@@ -637,13 +615,13 @@
                 particula.style.background = '#ffbe76';
                 particula.style.borderRadius = '50%';
                 particula.style.opacity = Math.random() * 0.6;
-                particula.style.animation = 'caidaPolvo 9s linear forwards';
+                particula.style.animation = 'caidaPolvo 8s linear forwards';
                 particula.style.pointerEvents = 'none';
                 document.body.appendChild(particula);
-                setTimeout(() => particula.remove(), 9000);
+                setTimeout(() => particula.remove(), 8000);
             }
         }
-        setInterval(polvoFino, 850);
+        setInterval(polvoFino, 800);
 
         function ajustarOrbitasResponsive() {
             const galaxia = document.querySelector('.galaxia-flotante');
@@ -666,14 +644,12 @@
                 newStyle.id = styleId;
                 newStyle.textContent = keyframes[i];
                 document.head.appendChild(newStyle);
-                orbitas[i].style.animation = `orbita${i+1} ${ orbitas[i].style.animationDuration || (i===2 ? '5s' : i===1 ? '12s' : i===3 ? '18s' : '8s')} infinite linear`;
             }
         }
         window.addEventListener('load', () => setTimeout(ajustarOrbitasResponsive, 100));
         window.addEventListener('resize', ajustarOrbitasResponsive);
         
         contenidoMain.classList.remove('visible');
-        contenidoMain.style.opacity = '0';
         
         let latidoBtn = setInterval(() => {
             if(btnAbrir && cartaOverlay && cartaOverlay.style.display !== 'none') {
