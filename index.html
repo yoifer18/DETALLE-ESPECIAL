@@ -14,7 +14,7 @@
 
         body {
             background: radial-gradient(circle at center, #03050b 0%, #000000 100%);
-            font-family: 'Segoe UI', 'Poppins', 'Georgia', serif;
+            font-family: 'Segoe UI', 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -23,7 +23,6 @@
             position: relative;
         }
 
-        /* Fondo estelar dinámico */
         .star-field {
             position: fixed;
             top: 0;
@@ -32,7 +31,6 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            overflow: hidden;
         }
 
         .star {
@@ -48,156 +46,147 @@
             100% { opacity: 1; transform: scale(1.2);}
         }
 
-        /* CARTA PRINCIPAL */
+        /* --- CARTA INICIAL --- */
         .carta-galaxia {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 200;
-            transition: opacity 1.2s ease, visibility 1.2s ease;
+            transition: opacity 1s ease;
         }
 
         .sobre-magico {
             background: linear-gradient(135deg, #1e1a2f, #0b0820);
-            border-radius: 48px;
+            border-radius: 40px;
             width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
+            max-width: 450px;
             padding: 2rem 1.5rem;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(255, 80, 120, 0.25);
             text-align: center;
-            border: 1px solid rgba(255, 100, 130, 0.5);
-            animation: flotarSuave 3s infinite ease-in-out;
-            position: relative;
+            border: 1px solid rgba(255, 100, 130, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            animation: flotarSuave 4s infinite ease-in-out;
         }
 
+        /* --- LA GALAXIA (Protagonista) --- */
         .galaxia-flotante {
             position: relative;
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 20px auto;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px auto;
             background: radial-gradient(ellipse at 30% 40%, #ffb347, #ff3e6c, #7a2be0);
             border-radius: 50%;
-            box-shadow: 0 0 45px rgba(255, 80, 120, 0.7);
-            animation: girarGalaxia 16s infinite linear;
+            box-shadow: 0 0 50px rgba(255, 62, 108, 0.6), inset 0 0 30px rgba(255,255,255,0.2);
+            animation: girarGalaxia 20s infinite linear;
         }
 
         .estrella-orbit {
             position: absolute;
             width: 6px;
             height: 6px;
-            background: #fff9c4;
+            background: #fff;
             border-radius: 50%;
             top: 50%;
             left: 50%;
+            box-shadow: 0 0 10px gold;
         }
         
-        /* Órbitas simplificadas para evitar saltos */
-        .estrella-orbit:nth-child(1) { animation: orbita1 8s infinite linear; }
-        .estrella-orbit:nth-child(2) { animation: orbita2 12s infinite reverse linear; }
+        .estrella-orbit:nth-child(1) { animation: orbita1 7s infinite linear; width: 4px; height: 4px; }
+        .estrella-orbit:nth-child(2) { animation: orbita2 10s infinite reverse linear; width: 8px; height: 8px; }
         .estrella-orbit:nth-child(3) { animation: orbita3 5s infinite linear; }
 
-        @keyframes orbita1 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(60px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(60px); } }
-        @keyframes orbita2 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(75px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(75px); } }
-        @keyframes orbita3 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(45px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(45px); } }
-
+        @keyframes orbita1 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(65px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(65px); } }
+        @keyframes orbita2 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(85px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(85px); } }
+        @keyframes orbita3 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(50px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(50px); } }
         @keyframes girarGalaxia { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes flotarSuave { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
-        .carta-titulo { font-size: 1.5rem; background: linear-gradient(135deg, #ffb347, #ff6b8b); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: bold; margin-bottom: 12px; }
-        .mensaje-cosmico { background: rgba(0, 0, 0, 0.4); border-radius: 20px; padding: 1rem; margin: 15px 0; border-left: 3px solid #ff6b8b; text-align: left; }
-        .mensaje-cosmico p { color: #ffefdf; font-size: 0.95rem; line-height: 1.5; margin-bottom: 10px; }
-        .highlight-cosmo { color: #ff8787; font-weight: bold; }
-        .firma-cosmo { font-style: italic; text-align: right; color: #ffbc7a; font-size: 0.9rem; margin-top: 10px; }
-
+        /* --- BOTONES Y MODALES --- */
         .btn-abrir {
             background: linear-gradient(45deg, #ff3e3e, #b81c5c);
             border: none;
-            padding: 12px 25px;
+            padding: 15px 30px;
             font-size: 1.1rem;
             font-weight: bold;
             color: white;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 0 15px #ff3e6c;
+            box-shadow: 0 0 20px rgba(255, 62, 108, 0.5);
+            width: 100%;
         }
 
-        /* MODALES */
         .obsession-flotante, .nombre-estelar {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
-            background: linear-gradient(145deg, #1a0c1c, #2a1030);
-            border-radius: 30px;
-            padding: 2rem;
-            width: 85%;
-            max-width: 450px;
+            background: linear-gradient(145deg, #150818, #2a1030);
+            border-radius: 35px;
+            padding: 2.5rem 2rem;
+            width: 88%;
+            max-width: 420px;
             z-index: 1000;
             text-align: center;
             border: 2px solid #ff3e6c;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .show { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
 
         .nombre-grande {
             font-size: 1.8rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #FFD966, #FF6B8B);
+            background: linear-gradient(135deg, #FFD966, #FF6B8B, #FFB347);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 10px rgba(255, 62, 108, 0.5);
+            line-height: 1.2;
         }
 
-        /* CONTENEDOR FINAL */
+        /* --- CONTENIDO FINAL --- */
         .container {
             text-align: center;
-            padding: 20px;
-            border-radius: 25px;
-            background: rgba(20, 20, 20, 0.9);
+            padding: 25px;
+            border-radius: 30px;
+            background: rgba(10, 10, 15, 0.9);
             width: 90%;
-            max-width: 450px;
+            max-width: 440px;
             z-index: 10;
             opacity: 0;
             transition: opacity 1s ease;
-            border-left: 4px solid #ff3e3e;
+            border: 1px solid rgba(255, 62, 108, 0.3);
         }
         .container.visible { opacity: 1; }
 
-        /* FRASES VOLADORAS */
         .frase-amor {
             position: fixed;
             z-index: 2000;
             pointer-events: none;
             white-space: nowrap;
             font-weight: bold;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
             animation: caerFrase 6s linear forwards;
         }
 
         @keyframes caerFrase {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(110vh) rotate(20deg); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(15deg); opacity: 0; }
         }
 
-        /* AJUSTES CELULAR */
+        @keyframes flotarSuave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
         @media (max-width: 600px) {
-            .carta-titulo { font-size: 1.2rem; }
-            .mensaje-cosmico p { font-size: 0.85rem; }
-            .nombre-grande { font-size: 1.4rem; }
-            .btn-abrir, .btn-continuar, .btn-cerrar-obsession { width: 100%; padding: 15px; }
+            .galaxia-flotante { width: 150px; height: 150px; }
+            .nombre-grande { font-size: 1.5rem; }
+            .sobre-magico { padding: 1.5rem 1rem; }
         }
     </style>
 </head>
@@ -211,40 +200,39 @@
                 <div class="estrella-orbit"></div>
                 <div class="estrella-orbit"></div>
             </div>
-            <div class="carta-titulo">💫 BAJO MI CUIDADO 💫</div>
-            <div class="mensaje-cosmico">
-                <p>✨ <span class="highlight-cosmo">Me fijé que te quedaban pocas gotas y no voy a permitir que te falte nada. <strong>Lo que es mío, yo lo cuido.</strong></span></p>
-                <p>🌙 Anoche no quise ver tus uñas por el cel; quiero que el estreno sea hoy, de cerca, cuando te tome las manos y sienta que eres solo mía.</p>
-                <p>💖 Mejórate pronto, mi reina. Tu hombre no te quita la mirada de encima.</p>
-                <div class="firma-cosmo">✧ Te quiero como loco mi reina. ✧</div>
+            <h2 style="color: #ffb347; margin-bottom: 15px; font-size: 1.4rem;">💫 BAJO MI CUIDADO 💫</h2>
+            <div style="text-align: left; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 20px; margin-bottom: 20px; border-left: 3px solid #ff6b8b;">
+                <p style="color: #fff; font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px;">✨ Me fijé que te quedaban pocas gotas y no voy a permitir que te falte nada. <strong>Lo que es mío, yo lo cuido.</strong></p>
+                <p style="color: #fff; font-size: 0.9rem; line-height: 1.5;">🌙 Mejórate pronto, mi reina. Tu hombre no te quita la mirada de encima.</p>
             </div>
             <button id="abrirCartaBtn" class="btn-abrir">✧ Abrir el corazón ✧</button>
         </div>
     </div>
 
     <div id="obsessionMsg" class="obsession-flotante">
-        <h3 style="color: #ff6b8b;">‼️ OBSESIÓN PURA ‼️</h3>
-        <p style="color: #ffe8dd; font-size: 0.9rem; margin: 15px 0;">Eres mi primer pensamiento al despertar y mi única obsesión al cerrar los ojos. <strong>Necesito tu existencia como el universo necesita las estrellas.</strong></p>
-        <button id="cerrarObsessionBtn" class="btn-abrir" style="font-size: 0.9rem;">Aceptar mi obsesión cielo ❤️‍🔥</button>
+        <div style="font-size: 2.5rem; margin-bottom: 15px;">💘💥💘</div>
+        <h3 style="color: #ff6b8b; margin-bottom: 10px;">‼️ OBSESIÓN PURA ‼️</h3>
+        <p style="color: #ffe8dd; font-size: 0.95rem; line-height: 1.6;">Eres mi primer pensamiento al despertar y mi única obsesión al cerrar los ojos. <strong>Necesito tu existencia como el universo necesita las estrellas.</strong></p>
+        <button id="cerrarObsessionBtn" class="btn-abrir" style="margin-top: 20px;">Aceptar mi obsesión cielo ❤️‍🔥</button>
     </div>
 
     <div id="nombreEstelarModal" class="nombre-estelar">
+        <div style="font-size: 2rem; margin-bottom: 10px;">⭐✨🌟</div>
         <div class="nombre-grande">ESTEFANIA ALVAREZ <br> MI REINA HERMOSA</div>
-        <button id="continuarFinalBtn" class="btn-abrir" style="margin-top: 20px;">Continuar →</button>
+        <button id="continuarFinalBtn" class="btn-abrir" style="margin-top: 25px;">Continuar →</button>
     </div>
 
     <div id="contenidoPrincipal" class="container">
-        <h1 style="color: #ff3e3e; font-size: 1.4rem; margin-bottom: 15px;">💫 BAJO MI CUIDADO 💫</h1>
-        <p style="color: white; font-size: 0.9rem; line-height: 1.6;">Me fijé que te quedaban pocas gotas mi cielo y no voy a permitir que te falte nada. <span style="color: #ff8a8a; font-weight: bold;">Lo que es mío, yo lo cuido.</span></p>
-        <p style="color: white; font-size: 0.9rem; line-height: 1.6; margin-top: 10px;">Anoche no quise ver tus uñas por el celular; quiero que el estreno sea hoy, de cerca.</p>
-        <div style="margin-top: 20px; font-style: italic; color: #ff8a8a; border-top: 1px dashed #555; padding-top: 10px;">🌙 Te quiero como loco, mi Estefania. 🌙</div>
+        <h1 style="color: #ff3e3e; font-size: 1.5rem; margin-bottom: 15px;">💫 Bajo mi cuidado 💫</h1>
+        <p style="color: white; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">Me fijé que te quedaban pocas gotas mi cielo y no voy a permitir que te falte nada. <span style="color: #ff8a8a; font-weight: bold;">Lo que es mío, yo lo cuido.</span></p>
+        <p style="color: white; font-size: 0.95rem; line-height: 1.6;">Anoche no quise ver tus uñas por el celular; quiero que el estreno sea hoy, de cerca.</p>
+        <div style="margin-top: 25px; font-style: italic; color: #ffbc7a; border-top: 1px dashed #444; padding-top: 15px;">🌙 Te quiero como loco, mi Estefania. 🌙</div>
     </div>
 
     <script>
-        // Crear estrellas de fondo
         function crearEstrellas() {
             const starfield = document.getElementById('starfield');
-            for (let i = 0; i < 150; i++) {
+            for (let i = 0; i < 120; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 const size = Math.random() * 2 + 1;
@@ -252,13 +240,12 @@
                 star.style.height = size + 'px';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.animationDuration = (Math.random() * 3 + 1.5) + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 starfield.appendChild(star);
             }
         }
         crearEstrellas();
 
-        // Lógica de navegación
         const btnAbrir = document.getElementById('abrirCartaBtn');
         const obsessionModal = document.getElementById('obsessionMsg');
         const btnCerrarObs = document.getElementById('cerrarObsessionBtn');
@@ -267,14 +254,12 @@
         const cartaOverlay = document.getElementById('cartaGalaxia');
         const contenidoPrincipal = document.getElementById('contenidoPrincipal');
 
-        btnAbrir.addEventListener('click', () => obsessionModal.classList.add('show'));
-        
-        btnCerrarObs.addEventListener('click', () => {
+        btnAbrir.onclick = () => obsessionModal.classList.add('show');
+        btnCerrarObs.onclick = () => {
             obsessionModal.classList.remove('show');
             nombreModal.classList.add('show');
-        });
-
-        btnFinal.addEventListener('click', () => {
+        };
+        btnFinal.onclick = () => {
             nombreModal.classList.remove('show');
             cartaOverlay.style.opacity = '0';
             setTimeout(() => {
@@ -282,20 +267,20 @@
                 contenidoPrincipal.classList.add('visible');
                 iniciarLluvia();
             }, 800);
-        });
+        };
 
         function iniciarLluvia() {
-            const frases = ["❤️ Te quiero mucho", "✨ Mi cielo", "👑 Mi reina", "💖 Eres mía"];
+            const frases = ["❤️ Te quiero mucho", "✨ Mi cielo", "👑 Mi reina", "💖 Eres mía", "🌹 Te adoro"];
             setInterval(() => {
                 const frase = document.createElement('div');
                 frase.classList.add('frase-amor');
                 frase.innerText = frases[Math.floor(Math.random() * frases.length)];
-                frase.style.left = Math.random() * 80 + '%';
+                frase.style.left = (Math.random() * 70 + 10) + '%';
                 frase.style.color = ['#ff6b8b', '#ffb347', '#ffd966'][Math.floor(Math.random() * 3)];
-                frase.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                frase.style.fontSize = (Math.random() * 10 + 16) + 'px';
                 document.body.appendChild(frase);
                 setTimeout(() => frase.remove(), 6000);
-            }, 600);
+            }, 700);
         }
     </script>
 </body>
