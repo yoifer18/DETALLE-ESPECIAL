@@ -2,14 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Solo Para Ti · Estefania Alvarez ✨ Te quiero mucho</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none;
+            user-select: none; /* evita selección no deseada pero sin afectar tap */
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -21,6 +22,7 @@
             justify-content: center;
             overflow-x: hidden;
             position: relative;
+            padding: 16px;
         }
 
         /* Fondo estelar dinámico */
@@ -64,12 +66,13 @@
             transition: opacity 1.2s ease, visibility 1.2s ease;
             opacity: 1;
             visibility: visible;
+            padding: 16px;
         }
 
         .sobre-magico {
             background: linear-gradient(135deg, #1e1a2f, #0b0820);
             border-radius: 48px;
-            width: 90%;
+            width: 100%;
             max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
@@ -80,6 +83,7 @@
             animation: flotarSuave 3s infinite ease-in-out;
             position: relative;
             scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
         }
 
         .sobre-magico::-webkit-scrollbar { width: 5px; }
@@ -96,6 +100,7 @@
             box-shadow: 0 0 45px rgba(255, 80, 120, 0.7), inset 0 0 35px rgba(255,255,200,0.5);
             animation: girarGalaxia 16s infinite linear;
             overflow: hidden;
+            max-width: 100%;
         }
 
         .galaxia-flotante::before {
@@ -163,6 +168,8 @@
             transition: 0.2s;
             box-shadow: 0 0 15px #ff3e6c;
             font-family: inherit;
+            width: auto;
+            min-width: 200px;
         }
         .btn-abrir:hover { transform: scale(1.02); background: linear-gradient(45deg, #ff5e5e, #d42c6a); box-shadow: 0 0 25px #ff6b8b; }
 
@@ -368,14 +375,18 @@
 
         @keyframes caidaPolvo { 0% { transform: translateY(-30px) scale(0.6); opacity: 0.8; } 100% { transform: translateY(100vh) scale(1.2); opacity: 0; } }
         @keyframes latidoSuave { 0% { transform: scale(1); } 50% { transform: scale(1.05); color: #ff4d4d; text-shadow: 0 0 5px #ff3e3e; } 100% { transform: scale(1); } }
+        @keyframes flotarChispa { 0% { transform: scale(0.2) translateY(0px); opacity: 0.8;} 100% { transform: scale(1.2) translateY(-50px) translateX(20px); opacity: 0;} }
 
         @media (max-width: 550px) {
+            body { padding: 8px; }
             .sobre-magico { padding: 1.5rem; }
             .galaxia-flotante { width: 150px; height: 150px; }
             .obsession-flotante { width: 85%; padding: 1.5rem; }
             .nombre-estelar { padding: 1.5rem; width: 85%; }
             .nombre-grande { font-size: 1.8rem; }
             .frase-amor { font-size: 0.9rem; white-space: nowrap; animation-duration: 5s; }
+            .carta-titulo { font-size: 1.5rem; }
+            .btn-abrir { padding: 10px 24px; font-size: 1rem; min-width: 170px; }
         }
     </style>
 </head>
@@ -396,7 +407,7 @@
                 <p>✨ <span class="highlight-cosmo">Me fijé que te quedaban pocas gotas y no voy a permitir que te falte nada. <strong>Lo que es mío, yo lo cuido.</strong></span></p>
                 <p>🌙 Anoche no quise ver tus uñas por el cel; quiero que el estreno sea hoy, de cerca, cuando te tome las manos y sienta que eres solo mía.</p>
                 <p>💖 Mejórate pronto, mi reina. Tu hombre no te quita la mirada de encima.</p>
-                <div class="firma-cosmo">✧ Te quiero como loco mi reina. ✧</div>
+                <div class="firma-cosmo">✧ Te amo como loco. ✧</div>
             </div>
             <button id="abrirCartaBtn" class="btn-abrir">✧ Abrir el corazón ✧</button>
             <p style="font-size: 0.75rem; margin-top: 12px; opacity: 0.7; color: #d9b48b;">toca el botón para revelar todo</p>
@@ -406,17 +417,17 @@
     <!-- Mensaje flotante de OBSESIÓN -->
     <div id="obsessionMsg" class="obsession-flotante">
         <div class="obsession-corazon">💘💥💘</div>
-        <h3>‼️ OBSESIÓN PURA CIELO ‼️</h3>
+        <h3>‼️ OBSESIÓN PURA ‼️</h3>
         <p>Eres mi primer pensamiento al despertar y mi única obsesión al cerrar los ojos. <strong>Necesito tu existencia como el universo necesita las estrellas.</strong> Cada célula de mi cuerpo te pertenece, y no concibo un segundo sin que sepas que late por ti. 🔥</p>
         <p>Eres MÍA. Con locura, con delirio, con una intensidad que quema galaxias. <span style="color:#ff8a8a;">Respiras y yo enloquezco.</span> Sonríes y se detiene el tiempo. Me volvería loco si te faltara algo, porque <strong class="highlight-cosmo">mi alma está esclava de tu amor.</strong></p>
         <div class="obsession-corazon">💖🔒💖</div>
-        <button id="cerrarObsessionBtn" class="btn-cerrar-obsession">Aceptar mi obsesión cielo❤️‍🔥</button>
+        <button id="cerrarObsessionBtn" class="btn-cerrar-obsession">Aceptar mi obsesión ❤️‍🔥</button>
     </div>
 
     <!-- MODAL PARA EL NOMBRE: ESTEFANIA ALVAREZ con estrellas -->
     <div id="nombreEstelarModal" class="nombre-estelar">
         <div class="estrellas-alrededor">⭐✨🌟✨⭐</div>
-        <div class="nombre-grande">ESTEFANIA ALVAREZ MI REINA HERMOSA</div>
+        <div class="nombre-grande">ESTEFANIA ALVAREZ</div>
         <div class="estrellas-alrededor">✨💫⭐🌟✨</div>
         <button id="continuarFinalBtn" class="btn-continuar">Continuar →</button>
     </div>
@@ -424,10 +435,10 @@
     <!-- Contenido principal final -->
     <div id="contenidoPrincipal" class="container">
         <h1>💫 Bajo mi cuidado 💫</h1>
-        <p>Me fijé que te quedaban pocas gotas mi cielo y no voy a permitir que te falte nada. <span class="highlight">Lo que es mío, yo lo cuido.</span></p>
-        <p>Anoche no quise ver tus uñas por el celular; quiero que el estreno sea hoy, de cerca, cuando te tome las manos y sienta que eres solo mía.</p>
+        <p>Me fijé que te quedaban pocas gotas y no voy a permitir que te falte nada. <span class="highlight">Lo que es mío, yo lo cuido.</span></p>
+        <p>Anoche no quise ver tus uñas por el cel; quiero que el estreno sea hoy, de cerca, cuando te tome las manos y sienta que eres solo mía.</p>
         <p>Mejórate pronto, mi reina. Tu hombre no te quita la mirada de encima.</p>
-        <div class="footer">🌙 Te quiero como loco, mi Estefania. Cada latido me recuerda que eres mi refugio cielo 🌙</div>
+        <div class="footer">🌙 Te amo como loco, Estefania. Cada latido me recuerda que eres mi hogar 🌙</div>
     </div>
 
     <script>
@@ -460,7 +471,7 @@
         
         let yaAbierto = false;
         let obsessionAceptada = false;
-        let intervaloFrases = null; // intervalo para lluvia infinita
+        let intervaloFrases = null;
 
         // Mostrar mensaje obsesion
         function mostrarObsesionFlotante() {
@@ -483,7 +494,6 @@
             }
         }
 
-        // Mostrar el nombre Estefania Alvarez con estrellas
         function mostrarNombreEstelar() {
             if (nombreModal) {
                 nombreModal.classList.add('show');
@@ -506,7 +516,6 @@
             }
         }
 
-        // ========== LLUVIA INFINITA DE FRASES (ARRIBA HACIA ABAJO) ==========
         function crearFraseAmor() {
             const frases = [
                 "❤️ Te quiero mucho ❤️", "🌹 Te quiero mucho 🌹", "💖 Te quiero mucho 💖",
@@ -523,15 +532,13 @@
             fraseDiv.style.color = colores[Math.floor(Math.random() * colores.length)];
             fraseDiv.style.left = Math.random() * 100 + '%';
             fraseDiv.style.fontSize = (Math.random() * 20 + 14) + 'px';
-            const duracion = Math.random() * 4 + 5; // entre 5 y 9 segundos
+            const duracion = Math.random() * 4 + 5;
             fraseDiv.style.animationDuration = duracion + 's';
-            // Elegir animación de caída (de arriba a abajo)
             const animType = Math.random() > 0.5 ? 'caerFraseArribaAbajo' : 'caerFraseArribaAbajoReverse';
             fraseDiv.style.animationName = animType;
             fraseDiv.style.animationTimingFunction = 'linear';
             fraseDiv.style.opacity = '0.9';
             document.body.appendChild(fraseDiv);
-            // Eliminar después de la animación
             setTimeout(() => {
                 if (fraseDiv && fraseDiv.remove) fraseDiv.remove();
             }, duracion * 1000);
@@ -539,39 +546,22 @@
 
         function iniciarLluviaInfinita() {
             if (intervaloFrases) clearInterval(intervaloFrases);
-            // Lanzar 20 frases inmediatamente para que se vea abundante
             for (let i = 0; i < 25; i++) {
                 setTimeout(() => crearFraseAmor(), i * 120);
             }
-            // Intervalo para seguir creando frases cada 0.6 segundos (flujo continuo)
             intervaloFrases = setInterval(() => {
                 crearFraseAmor();
-                // a veces dos a la vez para más intensidad
                 if (Math.random() > 0.6) {
                     setTimeout(() => crearFraseAmor(), 150);
                 }
             }, 600);
         }
 
-        function detenerLluviaInfinita() {
-            if (intervaloFrases) {
-                clearInterval(intervaloFrases);
-                intervaloFrases = null;
-            }
-            // Opcional: eliminar todas las frases existentes (para no saturar al final)
-            const todasFrases = document.querySelectorAll('.frase-amor');
-            todasFrases.forEach(f => f.remove());
-        }
-
-        // Función para cerrar el modal del nombre y mostrar la lluvia de frases + final
         function cerrarNombreYFinalizar() {
             if (nombreModal) {
                 nombreModal.classList.remove('show');
             }
-            // INICIAR LLUVIA INFINITA DE "TE QUIERO MUCHO", "MI CIELO", "MI REINA"
             iniciarLluviaInfinita();
-            
-            // Pequeño delay antes de revelar el contenido principal (para que disfrute la lluvia)
             setTimeout(() => {
                 if (!yaAbierto) {
                     yaAbierto = true;
@@ -582,7 +572,23 @@
                             cartaOverlay.style.visibility = 'hidden';
                             cartaOverlay.style.display = 'none';
                             contenidoMain.classList.add('visible');
-                            crearChispasEstelares();
+                            for(let i=0;i<60;i++) {
+                                const spark = document.createElement('div');
+                                spark.style.position = 'fixed';
+                                spark.style.width = Math.random() * 6 + 2 + 'px';
+                                spark.style.height = spark.style.width;
+                                spark.style.background = `radial-gradient(circle, #ffd966, #ff8c8c, #ffb347)`;
+                                spark.style.borderRadius = '50%';
+                                spark.style.pointerEvents = 'none';
+                                spark.style.zIndex = '999';
+                                spark.style.left = Math.random() * 100 + '%';
+                                spark.style.top = Math.random() * 100 + '%';
+                                spark.style.opacity = '0.9';
+                                spark.style.boxShadow = '0 0 14px gold';
+                                spark.style.animation = `flotarChispa ${Math.random() * 2 + 1.2}s ease-out forwards`;
+                                document.body.appendChild(spark);
+                                setTimeout(() => spark.remove(), 1300);
+                            }
                             const footerEl = document.querySelector('.footer');
                             if(footerEl) {
                                 footerEl.style.animation = 'latidoSuave 0.6s ease 2';
@@ -605,7 +611,6 @@
             mostrarNombreEstelar();
         }
 
-        // Eventos
         if (btnAbrir) {
             btnAbrir.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -624,26 +629,6 @@
             continuarFinal.addEventListener('click', () => {
                 cerrarNombreYFinalizar();
             });
-        }
-
-        function crearChispasEstelares() {
-            for(let i=0; i<60; i++) {
-                const spark = document.createElement('div');
-                spark.style.position = 'fixed';
-                spark.style.width = Math.random() * 6 + 2 + 'px';
-                spark.style.height = spark.style.width;
-                spark.style.background = `radial-gradient(circle, #ffd966, #ff8c8c, #ffb347)`;
-                spark.style.borderRadius = '50%';
-                spark.style.pointerEvents = 'none';
-                spark.style.zIndex = '999';
-                spark.style.left = Math.random() * 100 + '%';
-                spark.style.top = Math.random() * 100 + '%';
-                spark.style.opacity = '0.9';
-                spark.style.boxShadow = '0 0 14px gold';
-                spark.style.animation = `flotarChispa ${Math.random() * 2 + 1.2}s ease-out forwards`;
-                document.body.appendChild(spark);
-                setTimeout(() => spark.remove(), 1300);
-            }
         }
 
         function polvoFino() {
