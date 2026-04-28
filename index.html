@@ -376,6 +376,30 @@
             .nombre-estelar { padding: 1.5rem; width: 85%; }
             .nombre-grande { font-size: 1.8rem; }
             .frase-amor { font-size: 0.9rem; white-space: nowrap; animation-duration: 5s; }
+            @media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  /* Ajusta todos los contenedores principales al ancho del cel */
+  div, .container, .card { 
+    width: 92% !important;
+    max-width: 340px !important;
+    margin: 10px auto !important;
+  }
+  /* Ajusta los textos para que no se vean gigantes */
+  h1, h2 {
+    font-size: 20px !important;
+  }
+  p {
+    font-size: 15px !important;
+    line-height: 1.4;
+  }
+  /* Asegura que el botón sea fácil de tocar con el dedo */
+  button, .btn, a {
+    width: 100% !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+  }
         }
     </style>
 </head>
