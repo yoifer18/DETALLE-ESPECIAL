@@ -2,245 +2,271 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Solo Para Ti · Estefania Alvarez</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Solo Para Ti · Estefania Alvarez ✨ Te quiero mucho</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
         }
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Evita scrolls raros */
-        }
-
+        /* AJUSTE CLAVE: Usar min-height para que el fondo siempre cubra todo */
         body {
-            background: radial-gradient(circle at center, #05070a 0%, #000000 100%);
-            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at center, #03050b 0%, #000000 100%);
+            font-family: 'Segoe UI', 'Poppins', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh; /* Para navegadores modernos de celular */
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden; /* Evita que el rebote de la lluvia cree espacio blanco abajo */
             position: relative;
         }
 
-        /* Fondo de estrellas fijo */
         .star-field {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
             z-index: 0;
         }
 
         .star {
             position: absolute;
-            background: white;
+            background-color: white;
             border-radius: 50%;
-            opacity: 0.5;
+            opacity: 0;
             animation: twinkle 3s infinite alternate;
         }
 
         @keyframes twinkle {
-            from { opacity: 0.3; transform: scale(1); }
-            to { opacity: 1; transform: scale(1.2); }
+            0% { opacity: 0.2; transform: scale(1);}
+            100% { opacity: 1; transform: scale(1.2);}
         }
 
-        /* --- CONTENEDOR DE LA GALAXIA (CARTA) --- */
+        /* --- CARTA INICIAL --- */
         .carta-galaxia {
-            position: absolute;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 100;
-            transition: opacity 0.8s ease;
+            z-index: 200;
+            transition: opacity 1s ease;
         }
 
         .sobre-magico {
+            background: linear-gradient(135deg, #1e1a2f, #0b0820);
+            border-radius: 40px;
             width: 90%;
-            max-width: 400px;
-            padding: 2rem;
-            background: linear-gradient(145deg, #120f1f, #05040a);
-            border-radius: 35px;
-            border: 1px solid rgba(255, 62, 108, 0.3);
+            max-width: 450px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 100, 130, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            animation: flotarSuave 4s infinite ease-in-out;
         }
 
+        /* --- TU GALAXIA ORIGINAL --- */
         .galaxia-flotante {
             position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px;
-            background: radial-gradient(circle, #ffb347, #ff3e6c, #7a2be0);
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px auto;
+            background: radial-gradient(ellipse at 30% 40%, #ffb347, #ff3e6c, #7a2be0);
             border-radius: 50%;
-            box-shadow: 0 0 40px rgba(255, 62, 108, 0.4);
-            animation: rotar 15s infinite linear;
+            box-shadow: 0 0 50px rgba(255, 62, 108, 0.6), inset 0 0 30px rgba(255,255,255,0.2);
+            animation: girarGalaxia 20s infinite linear;
         }
 
         .estrella-orbit {
             position: absolute;
-            width: 5px;
-            height: 5px;
-            background: white;
+            width: 6px;
+            height: 6px;
+            background: #fff;
             border-radius: 50%;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
+            box-shadow: 0 0 10px gold;
         }
-        .o1 { animation: orb1 6s infinite linear; }
-        .o2 { animation: orb2 9s infinite linear reverse; }
         
-        @keyframes orb1 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(60px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(60px); } }
-        @keyframes orb2 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(80px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(80px); } }
-        @keyframes rotar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .estrella-orbit:nth-child(1) { animation: orbita1 7s infinite linear; width: 4px; height: 4px; }
+        .estrella-orbit:nth-child(2) { animation: orbita2 10s infinite reverse linear; width: 8px; height: 8px; }
+        .estrella-orbit:nth-child(3) { animation: orbita3 5s infinite linear; }
 
-        /* --- BOTONES --- */
-        .btn-accion {
-            background: linear-gradient(45deg, #ff3e6c, #ff6b8b);
+        @keyframes orbita1 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(65px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(65px); } }
+        @keyframes orbita2 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(85px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(85px); } }
+        @keyframes orbita3 { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(50px); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(50px); } }
+        @keyframes girarGalaxia { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- BOTONES Y MODALES --- */
+        .btn-abrir {
+            background: linear-gradient(45deg, #ff3e3e, #b81c5c);
             border: none;
-            padding: 14px 25px;
-            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 30px;
-            width: 100%;
-            margin-top: 15px;
+            color: white;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 62, 108, 0.3);
+            box-shadow: 0 0 20px rgba(255, 62, 108, 0.5);
+            width: 100%;
         }
 
-        /* --- MODALES --- */
-        .modal {
+        .obsession-flotante, .nombre-estelar {
             position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 85%;
-            max-width: 380px;
-            background: #111;
-            padding: 2rem;
-            border-radius: 30px;
-            border: 2px solid #ff3e6c;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(145deg, #150818, #2a1030);
+            border-radius: 35px;
+            padding: 2.5rem 2rem;
+            width: 88%;
+            max-width: 420px;
+            z-index: 1000;
             text-align: center;
-            z-index: 200;
+            border: 2px solid #ff3e6c;
             opacity: 0;
             visibility: hidden;
-            transition: 0.4s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .modal.show { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+        .show { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+
+        .nombre-grande {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD966, #FF6B8B, #FFB347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
         /* --- CONTENIDO FINAL --- */
         .container {
-            width: 90%;
-            max-width: 420px;
             text-align: center;
-            background: rgba(15, 15, 25, 0.8);
-            padding: 2rem;
+            padding: 25px;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transition: 1s;
+            background: rgba(10, 10, 15, 0.9);
+            width: 90%;
+            max-width: 440px;
             z-index: 10;
+            opacity: 0;
+            transition: opacity 1s ease;
+            border: 1px solid rgba(255, 62, 108, 0.3);
         }
         .container.visible { opacity: 1; }
 
-        .frase-lluvia {
-            position: absolute;
-            color: white;
-            font-weight: bold;
+        .frase-amor {
+            position: fixed;
+            z-index: 2000;
             pointer-events: none;
-            animation: bajar 5s linear forwards;
-            z-index: 5;
+            white-space: nowrap;
+            font-weight: bold;
+            animation: caerFrase 6s linear forwards;
         }
-        @keyframes bajar {
+
+        @keyframes caerFrase {
             0% { transform: translateY(-10vh); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
             100% { transform: translateY(110vh); opacity: 0; }
         }
+
+        @keyframes flotarSuave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
     </style>
 </head>
 <body>
     <div class="star-field" id="starfield"></div>
 
-    <div id="pantalla1" class="carta-galaxia">
+    <div id="cartaGalaxia" class="carta-galaxia">
         <div class="sobre-magico">
             <div class="galaxia-flotante">
-                <div class="estrella-orbit o1"></div>
-                <div class="estrella-orbit o2"></div>
+                <div class="estrella-orbit"></div>
+                <div class="estrella-orbit"></div>
+                <div class="estrella-orbit"></div>
             </div>
-            <h2 style="color: #ffb347; margin-bottom: 10px;">MI REINA</h2>
-            <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 15px;">Lo que es mío, yo lo cuido.</p>
-            <button class="btn-accion" onclick="mostrarObsesion()">Toca aquí, cielo</button>
+            <h2 style="color: #ffb347; margin-bottom: 15px; font-size: 1.4rem;">💫 BAJO MI CUIDADO 💫</h2>
+            <div style="text-align: left; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 20px; margin-bottom: 20px; border-left: 3px solid #ff6b8b;">
+                <p style="color: #fff; font-size: 0.9rem; line-height: 1.5;">✨ Me fijé que te quedaban pocas gotas y no voy a permitir que te falte nada. <strong>Lo que es mío, yo lo cuido.</strong></p>
+            </div>
+            <button id="abrirCartaBtn" class="btn-abrir">✧ Abrir el corazón ✧</button>
         </div>
     </div>
 
-    <div id="modalObsesion" class="modal">
-        <h3 style="color: #ff3e6c; margin-bottom: 10px;">¡OBSESIÓN!</h3>
-        <p style="color: white; font-size: 0.9rem;">Eres mi único pensamiento al despertar. Te quiero como un loco.</p>
-        <button class="btn-accion" onclick="mostrarNombre()">Siguiente</button>
+    <div id="obsessionMsg" class="obsession-flotante">
+        <h3 style="color: #ff6b8b; margin-bottom: 10px;">‼️ OBSESIÓN PURA ‼️</h3>
+        <p style="color: #ffe8dd; font-size: 0.95rem;">Eres mi primer pensamiento al despertar. Necesito tu existencia como el universo las estrellas.</p>
+        <button id="cerrarObsessionBtn" class="btn-abrir" style="margin-top: 20px;">Aceptar ❤️‍🔥</button>
     </div>
 
-    <div id="modalNombre" class="modal">
-        <h2 style="color: #ffb347; margin-bottom: 10px;">ESTEFANIA ALVAREZ</h2>
-        <p style="color: white;">La dueña de todo esto.</p>
-        <button class="btn-accion" onclick="finalizar()">Entrar al universo</button>
+    <div id="nombreEstelarModal" class="nombre-estelar">
+        <div class="nombre-grande">ESTEFANIA ALVAREZ</div>
+        <button id="continuarFinalBtn" class="btn-abrir" style="margin-top: 25px;">Continuar →</button>
     </div>
 
-    <div id="pantallaFinal" class="container">
-        <h1 style="color: #ff3e6c; margin-bottom: 15px;">Para ti, mi reina</h1>
-        <p style="color: white; line-height: 1.6;">Me fijé que te quedaban pocas gotas y no permitiré que te falte nada. Mejórate pronto. Esta noche quiero ver tus uñas de cerca.</p>
-        <p style="color: #ffb347; margin-top: 15px;">Te quiero mucho.</p>
+    <div id="contenidoPrincipal" class="container">
+        <h1 style="color: #ff3e3e; font-size: 1.5rem; margin-bottom: 15px;">💫 Bajo mi cuidado 💫</h1>
+        <p style="color: white; font-size: 0.95rem; margin-bottom: 15px;">No permitiré que te falte nada mi cielo. Mejórate pronto, mi reina.</p>
+        <p style="color: white; font-size: 0.95rem;">Esta noche quiero ver tus uñas de cerca.</p>
+        <div style="margin-top: 25px; color: #ffbc7a;">🌙 Te quiero mucho, Estefania. 🌙</div>
     </div>
 
     <script>
-        // Estrellas de fondo
-        const sf = document.getElementById('starfield');
-        for(let i=0; i<80; i++) {
-            let s = document.createElement('div');
-            s.className = 'star';
-            s.style.width = s.style.height = Math.random()*3+'px';
-            s.style.left = Math.random()*100+'%';
-            s.style.top = Math.random()*100+'%';
-            sf.appendChild(s);
+        // Generador de estrellas
+        const starfield = document.getElementById('starfield');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            starfield.appendChild(star);
         }
 
-        function mostrarObsesion() {
-            document.getElementById('modalObsesion').classList.add('show');
-        }
+        // Lógica de navegación
+        const btnAbrir = document.getElementById('abrirCartaBtn');
+        const obsessionModal = document.getElementById('obsessionMsg');
+        const btnCerrarObs = document.getElementById('cerrarObsessionBtn');
+        const nombreModal = document.getElementById('nombreEstelarModal');
+        const btnFinal = document.getElementById('continuarFinalBtn');
+        const cartaOverlay = document.getElementById('cartaGalaxia');
+        const contenidoPrincipal = document.getElementById('contenidoPrincipal');
 
-        function mostrarNombre() {
-            document.getElementById('modalObsesion').classList.remove('show');
-            document.getElementById('modalNombre').classList.add('show');
-        }
-
-        function finalizar() {
-            document.getElementById('modalNombre').classList.remove('show');
-            document.getElementById('pantalla1').style.opacity = '0';
+        btnAbrir.onclick = () => obsessionModal.classList.add('show');
+        btnCerrarObs.onclick = () => {
+            obsessionModal.classList.remove('show');
+            nombreModal.classList.add('show');
+        };
+        btnFinal.onclick = () => {
+            nombreModal.classList.remove('show');
+            cartaOverlay.style.opacity = '0';
             setTimeout(() => {
-                document.getElementById('pantalla1').style.display = 'none';
-                document.getElementById('pantallaFinal').classList.add('visible');
-                iniciarFrases();
+                cartaOverlay.style.display = 'none';
+                contenidoPrincipal.classList.add('visible');
+                iniciarLluvia();
             }, 800);
-        }
+        };
 
-        function iniciarFrases() {
-            const textos = ["❤️", "✨ Mi Reina", "👑 Estefania", "💖 Te quiero", "🌹 Mía"];
+        function iniciarLluvia() {
+            const frases = ["❤️", "✨ Mi cielo", "👑 Mi reina", "💖 Te quiero"];
             setInterval(() => {
-                let f = document.createElement('div');
-                f.className = 'frase-lluvia';
-                f.innerText = textos[Math.floor(Math.random()*textos.length)];
-                f.style.left = Math.random()*80 + 10 + '%';
-                f.style.fontSize = Math.random()*10 + 15 + 'px';
-                document.body.appendChild(f);
-                setTimeout(() => f.remove(), 5000);
-            }, 600);
+                const frase = document.createElement('div');
+                frase.classList.add('frase-amor');
+                frase.innerText = frases[Math.floor(Math.random() * frases.length)];
+                frase.style.left = (Math.random() * 80 + 10) + '%';
+                frase.style.color = '#ff6b8b';
+                document.body.appendChild(frase);
+                setTimeout(() => frase.remove(), 6000);
+            }, 800);
         }
     </script>
 </body>
